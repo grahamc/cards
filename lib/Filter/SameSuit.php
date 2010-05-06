@@ -7,7 +7,7 @@ class Filter_SameSuit extends Filter {
 	 */
 	public function attempt(Card $old, Card $new) {
 		if ($old->getSuit() !== $new->getSuit()) {
-			throw new Filter_Suit_Exception();
+			throw new Filter_SameSuit_Exception();
 		}
 	}
 }

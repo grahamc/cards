@@ -6,17 +6,15 @@ class Filter_BeginsWithKing extends Filter {
 	 * @return array of cards
 	 */
 	public function test(array $existing_cards, array $new_cards) {
-
-		if (count($existing_cards) > 0) {
-			return true;
-		}
-
-		$first = reset($new_cards);
+		$cards = $existing_cards + $new_cards;
+		$first = reset($cards);
 
 
 		if ($first->getNumber() != 13) {
 			throw new Filter_BeginsWithKing_Exception();
 		}
+
+		return true;
 	}
 
 	// Skeletal

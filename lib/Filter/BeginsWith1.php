@@ -13,6 +13,8 @@ class Filter_BeginsWith1 extends Filter {
 		if ($first->getNumber() != 1) {
 			throw new Filter_BeginsWith1_Exception();
 		}
+
+		return true;
 	}
 
 	// Skeletal

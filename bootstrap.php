@@ -2,7 +2,7 @@
 require_once 'lib/Card.php';
 require_once 'lib/Card/Exception.php';
 require_once 'lib/Card/Exception/Number.php';
-require_once 'lib/Card/Exception/Suite.php';
+require_once 'lib/Card/Exception/Suit.php';
 require_once 'lib/Filter.php';
 require_once 'lib/Filter/Exception.php';
 require_once 'lib/Filter/Ascending.php';
