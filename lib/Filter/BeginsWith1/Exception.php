@@ -1,0 +1,1 @@
+<?php class Filter_BeginsWith1_Exception extends Filter_Exception {}

@@ -1,0 +1,1 @@
+<?php class Filter_Ascending_Exception extends Filter_Exception {}

@@ -1,0 +1,1 @@
+<?php class Card_Exception_Number extends Card_Exception {}

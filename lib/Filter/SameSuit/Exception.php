@@ -1,0 +1,1 @@
+<?php class Filter_SameSuit_Exception extends Filter_Exception {}

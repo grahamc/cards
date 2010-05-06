@@ -1,0 +1,1 @@
+<?php class Filter_Sequential_Exception extends Filter_Exception {}
