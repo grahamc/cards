@@ -8,7 +8,7 @@ class Card {
 		if (in_array($suit, Card::$valid_suits)) {
 			$this->suit = $suit;
 		} else {
-			throw new Card_Exception_Suite();
+			throw new Card_Exception_Suit();
 		}
 
 		if (in_array($number, Card::$valid_numbers)) {

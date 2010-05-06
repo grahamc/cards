@@ -1,1 +1,0 @@
-<?php class Card_Exception_Suite extends Card_Exception {}

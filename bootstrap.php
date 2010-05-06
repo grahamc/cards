@@ -1,0 +1,22 @@
+<?php
+require_once 'lib/Card.php';
+require_once 'lib/Card/Exception.php';
+require_once 'lib/Card/Exception/Number.php';
+require_once 'lib/Card/Exception/Suite.php';
+require_once 'lib/Filter.php';
+require_once 'lib/Filter/Exception.php';
+require_once 'lib/Filter/Ascending.php';
+require_once 'lib/Filter/Ascending/Exception.php';
+require_once 'lib/Filter/Descending.php';
+require_once 'lib/Filter/Descending/Exception.php';
+require_once 'lib/Filter/Sequential.php';
+require_once 'lib/Filter/Sequential/Exception.php';
+require_once 'lib/Filter/SameSuit.php';
+require_once 'lib/Filter/SameSuit/Exception.php';
+require_once 'lib/Filter/BeginsWith1.php';
+require_once 'lib/Filter/BeginsWith1/Exception.php';
+require_once 'lib/Filter/BeginsWithKing.php';
+require_once 'lib/Filter/BeginsWithKing/Exception.php';
+require_once 'lib/Stack.php';
+require_once 'lib/Deck.php';
+require_once 'lib/Deck/BlueMoon.php';

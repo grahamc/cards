@@ -39,6 +39,7 @@ $game->moveVisible(4, 1, 3);
 $game->moveVisibleToDestination(6, 1, 2);
 $game->moveVisibleToDestination(2, 2, 3);
 $game->moveVisibleToDestination(2, 4, 3);
+$game->display();
 $game->moveHiddenToVisible(2);
 $game->moveVisible(1, 4, 2);
 $game->moveHiddenToVisible(1);
@@ -94,9 +95,9 @@ class Game {
 
 		$cards = $this->deck->getHiddenStack($stack)->pop(1);
 
-		$this->deck->getHiddenStack($stack)->disableFilters();
+		$this->deck->getVisibleStack($stack)->disableFilters();
 		$this->deck->getVisibleStack($stack)->add($cards);
-		$this->deck->getHiddenStack($stack)->enableFilters();
+		$this->deck->getVisibleStack($stack)->enableFilters();
 		return true;
 	}
 
