@@ -32,10 +32,10 @@ class DeckTest extends PHPUnit_Framework_TestCase {
 	 * @todo Implement testShuffle().
 	 */
 	public function testShuffle() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-				'This test has not been implemented yet.'
-		);
+		$cards = $this->object->getCards();
+		$this->object->shuffle();
+		$cards_2 = $this->object->getCards();
+		$this->assertNotEquals($cards, $cards_2);
 	}
 
 	public function testGetCards() {

@@ -21,6 +21,10 @@ class Filter_Ascending_ExceptionTest extends PHPUnit_Framework_TestCase
         $this->object = new Filter_Ascending_Exception;
     }
 
+	public function testType() {
+		$this->assertTrue($this->object instanceof Exception);
+	}
+
     /**
      * Tears down the fixture, for example, closes a network connection.
      * This method is called after a test is executed.

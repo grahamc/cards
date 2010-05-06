@@ -17,6 +17,8 @@ require_once 'lib/Filter/BeginsWith1.php';
 require_once 'lib/Filter/BeginsWith1/Exception.php';
 require_once 'lib/Filter/BeginsWithKing.php';
 require_once 'lib/Filter/BeginsWithKing/Exception.php';
+require_once 'lib/Filter/Fail.php';
+require_once 'lib/Filter/Fail/Exception.php';
 require_once 'lib/Stack.php';
 require_once 'lib/Deck.php';
 require_once 'lib/Deck/BlueMoon.php';

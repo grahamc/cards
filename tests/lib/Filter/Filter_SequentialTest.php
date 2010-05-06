@@ -32,12 +32,36 @@ class Filter_SequentialTest extends PHPUnit_Framework_TestCase
     /**
      * @todo Implement testAttempt().
      */
-    public function testAttempt()
+    public function testAttemptUp()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$c1 = new Card('C', 3);
+		$c2 = new Card('D', 4);
+
+		$this->assertEquals($this->object->attempt($c1, $c2), null);
     }
+
+    /**
+     * @todo Implement testAttempt().
+     */
+    public function testAttemptDown()
+    {
+		$c1 = new Card('C', 4);
+		$c2 = new Card('D', 3);
+
+		$this->assertEquals($this->object->attempt($c1, $c2), null);
+    }
+
+	/**
+     * @expectedException Filter_Sequential_Exception
+     */
+    public function testAttemptFail()
+    {
+		$c1 = new Card('C', 5);
+		$c2 = new Card('D', 3);
+
+		$this->object->attempt($c1, $c2);
+    }
+
+
 }
 ?>

@@ -44,9 +44,7 @@ class Stack {
 
 		if ($this->filters_enabled) {
 			foreach($this->filters as $filter) {
-				if ($filter instanceof Filter) {
-					$filter->test($cards, $stack->getCards());
-				}
+				$filter->test($cards, $stack->getCards());
 			}
 		}
 
@@ -76,5 +74,9 @@ class Stack {
 
 	public function getCards() {
 		return $this->cards;
+	}
+
+	public function getFilters() {
+		return $this->filters;
 	}
 }

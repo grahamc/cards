@@ -37,7 +37,7 @@ class Filter_SameSuitTest extends PHPUnit_Framework_TestCase
 		$c1 = new Card('C', 1);
 		$c2 = new Card('C', 2);
 
-		$this->assertTrue($this->object->attempt($c1, $c2) == null);
+		$this->assertEquals($this->object->attempt($c1, $c2), null);
     }
 
 	/**
