@@ -18,5 +18,5 @@ class Filter_BeginsWith1 extends Filter {
 	}
 
 	// Skeletal
-	public function attempt(Card $old, Card $new) {}
+	protected function attempt(Card $old, Card $new) {}
 }

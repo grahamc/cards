@@ -4,8 +4,14 @@ require_once 'PHPUnit/Framework.php';
 require_once dirname(__FILE__).'/../../lib/Filter.php';
 
 class MockFilter extends Filter {
+	public $pass = true;
+
 	public function attempt(Card $old, Card $new) {
-		throw new Filter_Exception();
+		if ($this->pass) {
+			return true;
+		} else {
+			throw new Filter_Exception();
+		}
 	}
 }
 
@@ -38,12 +44,21 @@ class FilterTest extends PHPUnit_Framework_TestCase {
 	 * @expectedException Filter_Exception
 	 */
 	public function testTest() {
+		$this->object->pass = false;
+
 		$cards = array(new Card('C', 1));
 		$new_cards = array(new Card('C', 2));
 
 		$this->object->test($cards, $new_cards);
+	}
 
+	public function testTestPass() {
+		$this->object->pass = true;
 
+		$cards = array(new Card('C', 1));
+		$new_cards = array(new Card('C', 2));
+
+		$this->object->test($cards, $new_cards);
 	}
 }
 ?>
