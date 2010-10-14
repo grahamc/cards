@@ -48,10 +48,7 @@ class Filter_BeginsWithKingTest extends PHPUnit_Framework_TestCase
 	}
 
 
-	/**
-     * @expectedException Filter_BeginsWithKing_Exception
-     */
-	public function testTestMultipleFailure() {
+	public function testTestMultipleSuccess() {
 		$c1 = array(new Card('C', 1), new Card('C', 12), new Card('H', 4));
 		$c2 = array(new Card('D', 13), new Card('S', 12), new Card('C', 4));
 
@@ -61,10 +58,20 @@ class Filter_BeginsWithKingTest extends PHPUnit_Framework_TestCase
     /**
      * @expectedException Filter_BeginsWithKing_Exception
      */
+	public function testTestMultipleFailure() {
+		$c1 = array();
+		$c2 = array(new Card('D', 12), new Card('S', 12), new Card('C', 4));
+
+		$this->assertTrue($this->object->test($c1, $c2));
+	}
+
+    /**
+     * @expectedException Filter_BeginsWithKing_Exception
+     */
     public function testTestFailure()
     {
-		$c1 = array(new Card('C', 1));
-		$c2 = array(new Card('C', 13));
+		$c1 = array();
+		$c2 = array(new Card('C', 1));
 
 		$this->object->test($c1, $c2);
     }

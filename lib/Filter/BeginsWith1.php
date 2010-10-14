@@ -6,9 +6,12 @@ class Filter_BeginsWith1 extends Filter {
 	 * @return array of cards
 	 */
 	public function test(array $existing_cards, array $new_cards) {
-		$all_cards = $existing_cards + $new_cards;
+		// If we already have cards on the stack then don't worry about it
+		if (count($existing_cards) > 0) {
+			return true;
+		}
 
-		$first = reset($all_cards);
+		$first = reset($new_cards);
 
 		if ($first->getNumber() != 1) {
 			throw new Filter_BeginsWith1_Exception();
@@ -18,5 +21,5 @@ class Filter_BeginsWith1 extends Filter {
 	}
 
 	// Skeletal
-	protected function attempt(Card $old, Card $new) {}
+	public function attempt(Card $old, Card $new) {}
 }

@@ -1,25 +1,5 @@
 <?php
-require_once 'lib/Card.php';
-require_once 'lib/Card/Exception.php';
-require_once 'lib/Card/Exception/Number.php';
-require_once 'lib/Card/Exception/Suite.php';
-require_once 'lib/Filter.php';
-require_once 'lib/Filter/Exception.php';
-require_once 'lib/Filter/Ascending.php';
-require_once 'lib/Filter/Ascending/Exception.php';
-require_once 'lib/Filter/Descending.php';
-require_once 'lib/Filter/Descending/Exception.php';
-require_once 'lib/Filter/Sequential.php';
-require_once 'lib/Filter/Sequential/Exception.php';
-require_once 'lib/Filter/SameSuit.php';
-require_once 'lib/Filter/SameSuit/Exception.php';
-require_once 'lib/Filter/BeginsWith1.php';
-require_once 'lib/Filter/BeginsWith1/Exception.php';
-require_once 'lib/Filter/BeginsWithKing.php';
-require_once 'lib/Filter/BeginsWithKing/Exception.php';
-require_once 'lib/Stack.php';
-require_once 'lib/Deck.php';
-require_once 'lib/Deck/BlueMoon.php';
+require_once 'bootstrap.php';
 
 
 class Deck_BlueMoon_Stacked extends Deck_BlueMoon {
@@ -29,22 +9,98 @@ class Deck_BlueMoon_Stacked extends Deck_BlueMoon {
 }
 
 $game = new Game();
-
-$game->moveVisibleToDestination(0, 1, 0);
+$game->display();
+$game->moveVisibleToDestination(0, 0);
 $game->moveVisible(1, 1, 2);
 $game->moveVisible(2, 2, 3);
 $game->moveVisible(6, 2, 3);
 $game->moveVisible(5, 1, 3);
 $game->moveVisible(4, 1, 3);
-$game->moveVisibleToDestination(6, 1, 2);
-$game->moveVisibleToDestination(2, 2, 3);
-$game->moveVisibleToDestination(2, 4, 3);
-$game->display();
+$game->moveVisibleToDestination(6, 2);
+$game->moveVisibleToDestination(1, 2);
+$game->moveVisibleToDestination(2, 2);
+$game->moveVisible(6, 1, 1);
+$game->moveVisible(1, 2, 2);
+$game->moveVisible(4, 1, 5);
+$game->moveVisible(6, 1, 1);
+$game->moveHiddenToVisible(6);
+$game->moveVisibleToDestination(6, 1);
+$game->moveHiddenToVisible(6);
+$game->moveVisible(5, 4, 2);
+$game->moveVisible(6, 1, 5);
+$game->moveHiddenToVisible(6);
+$game->moveVisible(5, 2, 0);
+$game->moveHiddenToVisible(5);
+$game->moveVisible(4, 3, 5);
+$game->moveHiddenToVisible(4);
+$game->moveVisible(3, 9, 5);
+$game->moveVisible(2, 8, 3);
+$game->moveVisibleToDestination(2, 3);
 $game->moveHiddenToVisible(2);
-$game->moveVisible(1, 4, 2);
+$game->moveVisible(1, 3, 2);
 $game->moveHiddenToVisible(1);
-$game->moveVisibleToDestination(1, 1, 0);
+$game->moveVisible(3, 10, 4);
+$game->moveVisibleToDestination(1, 0);
+$game->moveVisibleToDestination(2, 1);
+$game->moveVisibleToDestination(2, 1);
+$game->moveHiddenToVisible(3);
+$game->moveVisibleToDestination(3, 3);
+$game->moveHiddenToVisible(3);
+$game->moveVisible(2, 2, 3);
+$game->moveHiddenToVisible(2);
+$game->moveVisibleToDestination(2, 0);
+$game->moveVisible(5, 3, 1);
+$game->moveVisible(4, 2, 5);
+$game->moveVisible(4, 1, 2);
+$game->moveVisible(5, 6, 1);
+$game->moveVisible(5, 1, 1);
+$game->moveVisible(5, 2, 2);
+$game->moveVisible(4, 4, 2);
+$game->moveVisible(5, 1, 2);
+$game->moveVisible(6, 1, 5);
+$game->moveHiddenToVisible(6);
+$game->moveVisible(5, 3, 0);
+$game->moveHiddenToVisible(5);
+$game->moveVisible(5, 1, 0);
+$game->moveHiddenToVisible(5);
+$game->moveVisible(5, 1, 6);
+$game->moveHiddenToVisible(5);
+$game->moveVisible(4, 4, 0);
+$game->moveVisible(0, 2, 2);
+$game->moveVisible(6, 2, 0);
+$game->moveHiddenToVisible(4);
+$game->moveHiddenToVisible(6);
+$game->moveVisible(5, 1, 6);
+$game->moveHiddenToVisible(5);
+$game->moveVisible(4, 1, 0);
+$game->moveHiddenToVisible(4);
+$game->moveVisible(3, 3, 4);
+$game->moveHiddenToVisible(3);
+$game->moveVisible(4, 4, 6);
+$game->moveHiddenToVisible(4);
+$game->moveVisible(3, 1, 4);
+$game->moveVisible(4, 2, 5);
+$game->moveVisible(6, 6, 3);
+$game->moveHiddenToVisible(6);
+$game->moveVisible(5, 3, 6);
+$game->moveVisible(6, 4, 3);
 
+
+for ($i = 0; $i < 11; $i++) {
+    $game->moveVisibleToDestination(0, 3);
+}
+
+for ($i = 0; $i < 11; $i++) {
+    $game->moveVisibleToDestination(1, 2);
+}
+
+for ($i = 0; $i < 11; $i++) {
+    $game->moveVisibleToDestination(2, 1);
+}
+
+for ($i = 0; $i < 11; $i++) {
+    $game->moveVisibleToDestination(3, 0);
+}
 
 $game->display();
 
@@ -101,8 +157,8 @@ class Game {
 		return true;
 	}
 
-	public function moveVisibleToDestination($stack, $count, $to) {
-		$cards = $this->deck->getVisibleStack($stack)->pop($count);
+	public function moveVisibleToDestination($stack, $to) {
+		$cards = $this->deck->getVisibleStack($stack)->pop(1);
 		try {
 			$this->deck->getDestinationStack($to)->add($cards);
 			return true;

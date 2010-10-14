@@ -18,5 +18,5 @@ abstract class Filter {
 		return true;
 	}
 
-	abstract protected function attempt(Card $old, Card $new);
+	abstract public function attempt(Card $old, Card $new);
 }

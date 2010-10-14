@@ -6,8 +6,12 @@ class Filter_BeginsWithKing extends Filter {
 	 * @return array of cards
 	 */
 	public function test(array $existing_cards, array $new_cards) {
-		$cards = $existing_cards + $new_cards;
-		$first = reset($cards);
+		// If we already have cards on the stack then don't worry about it
+		if (count($existing_cards) > 0) {
+			return true;
+		}
+
+		$first = reset($new_cards);
 
 
 		if ($first->getNumber() != 13) {

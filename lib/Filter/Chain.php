@@ -10,7 +10,7 @@ abstract class Filter_Chain extends Filter {
 		return $this->filters;
 	}
 
-	protected function attempt(Card $old, Card $new) {
+	public function attempt(Card $old, Card $new) {
 		return true;
 	}
 }
