@@ -26,3 +26,4 @@ require_once 'lib/Filter/Chain/Or.php';
 require_once 'lib/Stack.php';
 require_once 'lib/Deck.php';
 require_once 'lib/Deck/BlueMoon.php';
+require_once 'lib/Game.php';

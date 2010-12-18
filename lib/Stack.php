@@ -1,5 +1,5 @@
 <?php
-class Stack {
+class Stack implements Countable {
 	protected $cards = array();
 	protected $filters = array();
 	
@@ -15,6 +15,10 @@ class Stack {
 				$this->cards[] = $card;
 			}
 		}
+	}
+	
+	public function count() {
+	    return count($this->cards);
 	}
 
 	/**

@@ -1,6 +1,6 @@
 <?php
 
-class Card {
+class Card implements Serializable {
 	public static $valid_suits = array('H', 'S', 'C', 'D');
 	public static $valid_numbers = array(1,2,3,4,5,6,7,8,9,10,11,12,13);
 
@@ -17,6 +17,14 @@ class Card {
 			throw new Card_Exception_Number();
 		}
 	}
+
+    public function serialize() {
+        return serialize(array($this->suit, $this->number));
+    }
+    
+    public function unserialize($data) {
+        list($this->suit, $this->number) = unserialize($data);
+    }
 
 	public function getNumber() {
 		return $this->number;

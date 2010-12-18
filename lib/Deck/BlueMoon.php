@@ -3,6 +3,30 @@ class Deck_BlueMoon extends Deck {
 
 	protected $stacks = array('hidden' => array(), 'visible' => array(), 'destination' => array());
 
+    public function serialize() {
+        return serialize(array($this->cards, $this->stacks));
+    }
+    
+    public function unserialize($data) {
+        list($this->cards, $this->stacks) = unserialize($data);
+    }
+    
+    public function isWon() {
+        foreach ($this->stacks['hidden'] as $i => $stack) {
+            if (count($stack) > 0) {
+                return false;
+            }
+        }
+        
+        foreach ($this->stacks['visible'] as $stack) {
+            if (count($stack) > 0) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+
 	/**
 	 *
 	 * @param <type> $i

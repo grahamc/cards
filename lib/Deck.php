@@ -1,6 +1,6 @@
 <?php
 
-class Deck {
+class Deck implements Serializable {
 	protected $cards = array();
 
 	public function __construct() {
@@ -9,6 +9,14 @@ class Deck {
 				$this->cards[] = new Card($suit, $number);
 			}
 		}
+	}
+	
+	public function serialize() {
+	    return serialize($this->cards);
+	}
+	
+	public function unserialize($data) {
+	    $this->cards = unserialize($data);
 	}
 
 	public function shuffle() {
