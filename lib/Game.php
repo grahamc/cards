@@ -41,10 +41,10 @@ class Game implements Serializable {
 			$this->deck->getVisibleStack($to)->add($cards);
 			return true;
 		} catch (Filter_Exception $e) {
-			echo 'Failure: ' . get_class($e) . "\r\n";
 			$this->deck->getVisibleStack($stack)->disableFilters();
 			$this->deck->getVisibleStack($stack)->add($cards);
 			$this->deck->getVisibleStack($stack)->enableFilters();
+			throw $e;
 			return false;
 		}
 	}
@@ -99,17 +99,20 @@ class Game implements Serializable {
 		echo "\r\n";
 
 		echo "In Play: \r\n";
+		
+		$out = '';
 		for ($i = 0; $i <= 6; $i++) {
 			$h = $this->deck->getHiddenStack($i)->getCards();
-			echo '-';
-			echo str_repeat('#', count($h)) . ' ';
+			$out .= $i . "\t";
+			$out .= str_repeat('#', count($h)) . "\t";
 
 			foreach ($this->deck->getVisibleStack($i)->getCards() as $card) {
-				echo $card . ' ';
+				$out .= $card . "\t";
 			}
 
-			echo "\r\n";
+			$out .= "\r\n";
 		}
+		echo shell_exec('echo ' . escapeshellarg($out) . ' | column -tx -s \t');
 
 	}
 }

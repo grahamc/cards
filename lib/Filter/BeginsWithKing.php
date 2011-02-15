@@ -12,8 +12,11 @@ class Filter_BeginsWithKing extends Filter {
 		}
 
 		$first = reset($new_cards);
-
-
+        
+        if (!$first instanceof Card) {
+            throw new InvalidArgumentException('No new cards');
+        }
+        
 		if ($first->getNumber() != 13) {
 			throw new Filter_BeginsWithKing_Exception();
 		}

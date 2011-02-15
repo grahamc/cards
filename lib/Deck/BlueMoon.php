@@ -33,6 +33,10 @@ class Deck_BlueMoon extends Deck {
 	 * @return Stack
 	 */
 	public function getVisibleStack($i) {
+	    if (!isset($this->stacks['visible'][$i])) {
+	        throw new InvalidArgumentException('Invalid stack ' . $i);
+	    }
+	    
 		return $this->stacks['visible'][$i];
 	}
 
