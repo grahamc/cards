@@ -4,9 +4,6 @@ require_once 'bootstrap.php';
 // colorize: echo chr(27).'[1;31mHi!' . chr(27) . '[0m';
 
 class Deck_BlueMoon_Stacked extends Deck_BlueMoon {
-	public function shuffle() {
-		parent::shuffle();
-	}
 }
 
 if (file_exists('.datastore')) {
@@ -32,6 +29,8 @@ while (!$game->getDeck()->isWon()) {
     
     try {
         switch ($cmd) {
+	    case "deal":
+	    	$game = new Game();
             case 'help':
                 echo "commands: mv <from> <number> <to> " . PHP_EOL;
                 echo "mv <stack> <destination>" . PHP_EOL;
@@ -48,8 +47,12 @@ while (!$game->getDeck()->isWon()) {
                 break;
             
             case 'ls':
-                $game->moveHiddenToVisible($args[0]);
-                break;
+	    	if (isset($args[0])) {
+                	$game->moveHiddenToVisible($args[0]);
+                } else {
+			throw new InvalidArgumentException('Invalid argument to ls: must provide argument.');
+		}
+		break;
             
             case 'save':
                 file_put_contents('.datastore', serialize($game));
