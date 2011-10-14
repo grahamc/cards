@@ -1,6 +1,4 @@
 <?php
-require_once 'PHPUnit/Framework.php';
-
 require_once dirname(__FILE__).'/../../lib/Card.php';
 require_once dirname(__FILE__).'/../../lib/Card/Exception.php';
 require_once dirname(__FILE__).'/../../lib/Card/Exception/Suit.php';

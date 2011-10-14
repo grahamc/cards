@@ -1,5 +1,4 @@
 <?php
-require_once 'PHPUnit/Framework.php';
 
 class Filter_BeginsWith1_Proxy extends Filter_BeginsWith1 {
 	public function attempt(Card $old, Card $new) {
