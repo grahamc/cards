@@ -7,7 +7,6 @@
         ]
     },
     "commands": {
-        "0": ["phpunit", "--help"],
         "1": ["phpunit", "--configuration test/configuration.xml", "test/lib"]
     }
 }
