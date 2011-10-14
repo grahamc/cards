@@ -1,0 +1,14 @@
+{
+    "boxfile": "lucid32",
+    "dependencies": {
+        "apt": [
+            "php5"
+        ],
+        "pear": [
+            "
+    },
+    "commands": {
+        "0": ["phpunit -c test/configuration.xml test/lib"]
+    }
+}
+
