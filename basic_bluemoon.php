@@ -21,58 +21,58 @@ while (!$game->getDeck()->isWon()) {
     $game->display();
     $line = readline('$');
     valid_cmd($line);
-    
+
     $args = explode(' ', $line);
     $cmd = array_shift($args);
-    
+
     $args = array_values($args);
-    
+
     try {
         switch ($cmd) {
-	    case "deal":
-	    	$game = new Game();
-            case 'help':
-                echo "commands: mv <from> <number> <to> " . PHP_EOL;
-                echo "mv <stack> <destination>" . PHP_EOL;
-                echo "ls <stack>" . PHP_EOL;
-                echo "save" . PHP_EOL;
-                break;
-            case 'move':
-            case 'mv':
-                if (count($args) === 3) {
-                    $game->moveVisible($args[0], $args[1], $args[2]);
-                } else {
-                    $game->moveVisibleToDestination($args[0], $args[1]);
-                }
-                break;
-            
-            case 'ls':
-	    	if (isset($args[0])) {
-                	$game->moveHiddenToVisible($args[0]);
-                } else {
-			throw new InvalidArgumentException('Invalid argument to ls: must provide argument.');
-		}
-		break;
-            
-            case 'save':
-                file_put_contents('.datastore', serialize($game));
-                break;
-            
-            case 'abort':
-                file_put_contents('.datastore', null);
-                exit(0);
-                break;
-            
-            case 'exit':
-                exit();
-                break;
-            
-            case 'clear':
-                break;
-            
-            default:
-                throw new InvalidArgumentException('Invalid command: ' . $line);
-                break;
+        case "deal":
+            $game = new Game();
+        case 'help':
+            echo "commands: mv <from> <number> <to> " . PHP_EOL;
+            echo "mv <stack> <destination>" . PHP_EOL;
+            echo "ls <stack>" . PHP_EOL;
+            echo "save" . PHP_EOL;
+            break;
+        case 'move':
+        case 'mv':
+            if (count($args) === 3) {
+                $game->moveVisible($args[0], $args[1], $args[2]);
+            } else {
+                $game->moveVisibleToDestination($args[0], $args[1]);
+            }
+            break;
+
+        case 'ls':
+            if (isset($args[0])) {
+                $game->moveHiddenToVisible($args[0]);
+            } else {
+                throw new InvalidArgumentException('Invalid argument to ls: must provide argument.');
+            }
+            break;
+
+        case 'save':
+            file_put_contents('.datastore', serialize($game));
+            break;
+
+        case 'abort':
+            file_put_contents('.datastore', null);
+            exit(0);
+            break;
+
+        case 'exit':
+            exit();
+            break;
+
+        case 'clear':
+            break;
+
+        default:
+            throw new InvalidArgumentException('Invalid command: ' . $line);
+            break;
         }
     } catch (Exception $e) {
         echo chr(27).'[1;31m' . $e->getMessage() . chr(27) . '[0m' . "\r\n";
